@@ -13,10 +13,24 @@ app.use(cors());
 app.get("/api", (req, res) => {
   const { slack_name, track } = req.query;
 
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const date = new Date();
+  const dayOfWeek = date.getDay();
+  const currentDay = daysOfWeek[dayOfWeek];
+
   res.json({
     slack_name,
     track,
-    utc_time: new Date().toUTCString(),
+    utc_time: new Date(),
+    current_day: currentDay,
     github_file_url:
       "https://github.com/josephden16/hngx-backend-stage-one/blob/main/index.js",
     github_repo_url: "https://github.com/josephden16/hngx-backend-stage-one",
