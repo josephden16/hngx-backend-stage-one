@@ -17,8 +17,9 @@ app.get("/api", (req, res) => {
     slack_name,
     track,
     utc_time: new Date().toUTCString(),
-    github_file_url: "",
-    github_repo_url: "",
+    github_file_url:
+      "https://github.com/josephden16/hngx-backend-stage-one/blob/main/index.js",
+    github_repo_url: "https://github.com/josephden16/hngx-backend-stage-one",
     status_code: 200,
   });
 });
