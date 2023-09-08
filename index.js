@@ -25,11 +25,16 @@ app.get("/api", (req, res) => {
   const date = new Date();
   const dayOfWeek = date.getDay();
   const currentDay = daysOfWeek[dayOfWeek];
+  const isoStringWithMilliseconds = date.toISOString();
+  const isoStringWithoutMilliseconds = isoStringWithMilliseconds.replace(
+    /\.\d{3}Z$/,
+    "Z"
+  );
 
   res.json({
     slack_name,
     track,
-    utc_time: new Date(),
+    utc_time: isoStringWithoutMilliseconds,
     current_day: currentDay,
     github_file_url:
       "https://github.com/josephden16/hngx-backend-stage-one/blob/main/index.js",
